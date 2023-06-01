@@ -7,7 +7,8 @@ public class PlayerHandler : MonoBehaviour
     public Rigidbody2D rigidbody2D;
 
     public Animator animator;
-    
+
+    private int walk = 4;
     void Start()
     {
         
@@ -20,29 +21,30 @@ public class PlayerHandler : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             // 給角色速度
-            rigidbody2D.velocity = new Vector2(-5, rigidbody2D.velocity.y);
+            rigidbody2D.velocity = new Vector2(-4, rigidbody2D.velocity.y);
             // 按A時，角色方向轉負x軸
             transform.localScale = new Vector3(-1, 1, 1);
-            // 設bool值"walking"為true
-            animator.SetBool("walking",true);
+            // int 2
+            animator.SetBool("walk",true);
         }
         
         // 按下D鍵
         else if (Input.GetKey(KeyCode.D))
         {
             // 給角色速度
-            rigidbody2D.velocity = new Vector2(5, rigidbody2D.velocity.y);
+            rigidbody2D.velocity = new Vector2(4, rigidbody2D.velocity.y);
             // 按D時，角色方向轉正x軸
             transform.localScale = new Vector3(1, 1, 1);
-            // 設bool值"walking"為true
-            animator.SetBool("walking",true);
+            // int 2
+            animator.SetBool("walk",true);
         }
-        
-        else
+
+        // 按下Shift鍵
+        else if (Input.GetKey(KeyCode.LeftShift))
         {
-            // 設bool值"walking"為false
-            animator.SetBool("walking",false);
+            animator.SetBool("run",true);
         }
+
     }
     
     
